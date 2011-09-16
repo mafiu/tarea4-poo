@@ -1,0 +1,91 @@
+10
+
+dir
+0
+https://tarea1-elo329.googlecode.com/svn/trunk/t4-diaz-rosenberg/nbproject
+https://tarea1-elo329.googlecode.com/svn
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+
+
+
+
+
+
+
+
+
+
+
+039be881-514d-9942-0ffe-e6e969f78070
+
+project.properties
+file
+
+
+
+add
+
+Makefile-Release.mk
+file
+
+
+
+add
+
+Makefile-impl.mk
+file
+
+
+
+add
+
+project.xml
+file
+
+
+
+add
+
+Package-Release.bash
+file
+
+
+
+add
+
+Makefile-Debug.mk
+file
+
+
+
+add
+
+configurations.xml
+file
+
+
+
+add
+
+Makefile-variables.mk
+file
+
+
+
+add
+
+Package-Debug.bash
+file
+
+
+
+add
+
