@@ -1,6 +1,9 @@
 K 10
 svn:ignore
-V 9
+V 33
 .dep.inc
+.git
+.cproject
+.project
 
 END

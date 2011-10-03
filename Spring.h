@@ -14,11 +14,11 @@ class Vector2D;
 #include "PhysicsElement.h"
 #include <cmath>
 #include <iostream>
-
+#include <sstream>
 
 using namespace std;
 
-class Spring : public PhysicsElement{
+class Spring : public PhysicsElement {
 public:
     // constructores
     //Spring(const Spring& orig);
@@ -34,23 +34,23 @@ public:
     // calculo de la fuerza
     Vector2D getForce(AttachableElement* ae);
 
+    string int2string(int n);
+    
     // displayers
     string getDescription();
     string getState();
-    
-    
+
+
 
 private:
-    static int id;
+    int id;
     float stiffness;
     double getLength();
 protected:
     float restLength;
-
     // referencias a dos bloques 
     AttachableElement * a_end;
     AttachableElement * b_end;
-    
 };
 
 #endif	/* SPRING_H */

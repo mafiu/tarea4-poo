@@ -15,19 +15,27 @@ Block::Block(float m, Vector2D& position, Vector2D& speed) {
 
 }
 
-// TODO
-
 string Block::getDescription() {
-    return "Hola";
-    //    return "Block #" + getId() + ": x,y";
+    //  crear el string "Block #" + getId() + ": x,y";
+    string msg;
+    msg.append("Block #").append(int2string(myid)).append(": x,y");
+    return msg;
+
 }
 
 string Block::getState() {
-    return "Hola";
-    //    return getPosition().getX() + "," + getPosition().getY() + "";
+    string msg;
+    
+    return msg;
 }
 
-// ENDTODO
+string Block::int2string(int n) {
+    stringstream flujo;
+    flujo << n;
+    return (flujo.str());
+}
+
+
 
 /* Asociar a Resortes*/
 
@@ -36,7 +44,7 @@ void Block::attachSpring(Spring* s) {
 }
 
 void Block::detachSpring(Spring* spring) {
-
+    springs.pop_back();
 }
 
 /* Calcular Fuerzas y Estados */
@@ -45,7 +53,6 @@ Vector2D Block::getNetForce(float g) {
     double roce = 1.0;
     Vector2D fuerza;
     Vector2D fuerzagravedad(0, -mass * g);
-
 
     Vector2D fuerzaroce(-roce * speed_t.getX(), -roce * speed_t.getY());
 
@@ -67,23 +74,24 @@ Vector2D Block::getPosition() {
 }
 
 void Block::setInitialState(float g) {
-    accel_tMinusDelta = getNetForce(g)* (1 / mass);
+    accel_tMinusDelta = getNetForce(g) * (1 / mass);
 }
 
 void Block::computeNextState(double delta_t, float g) {
-    accel_t = getNetForce(g)* (1 / mass);
+    accel_t = getNetForce(g) * (1 / mass);
 
-    // speed_tPlusDelta = speed_t + (3*a_t - a_tMinusDelta)*delta_t/2;
-    speed_tPlusDelta = speed_t - (3.0 * accel_t - accel_tMinusDelta) * delta_t * (1 / 2);
+    /* estas son las ecuaciones para calcular la velocidad y posicion en un 
+     * delta posterior la fuente es el documento que pasó el profesor */
 
-    // pos_tPlusDelta = pos_t   +  speed_t   *   delta_t    +   (a_t*4 - a_tMinusDelta)*delta_t*delta_t/6;
-    pos_tPlusDelta = pos + (speed_t * delta_t) + (4.0 * accel_t - accel_tMinusDelta) * delta_t * delta_t * (1 / 6);
+    speed_tPlusDelta = speed_t - (3.0 * accel_t - accel_tMinusDelta) * delta_t
+            * (1 / 2);
+    pos_tPlusDelta = pos + (speed_t * delta_t) + (4.0 * accel_t
+            - accel_tMinusDelta) * delta_t * delta_t * (1 / 6);
 }
 
 void Block::updateState() {
     pos = pos_tPlusDelta;
     speed_t = speed_tPlusDelta;
     accel_tMinusDelta = accel_t;
-
 }
 

@@ -7,31 +7,37 @@
 
 #include "FixedHook.h"
 
+/* Clase que permite definir el comportamiento del gancho
+ */
 FixedHook::FixedHook() {
 }
 
 FixedHook::FixedHook(const FixedHook& orig) {
 }
 
-FixedHook::FixedHook(Vector2D& position){
+FixedHook::FixedHook(Vector2D& position) {
     pos = position;
 }
+
 FixedHook::~FixedHook() {
 }
 
-void FixedHook::attachSpring(Spring* spring){
+void FixedHook::attachSpring(Spring* spring) {
     springs.push_back(spring);
 }
-void FixedHook::detachSpring(Spring* spring){
+
+void FixedHook::detachSpring(Spring* spring) {
 
 }
 
-Vector2D FixedHook::getPosition(){
+Vector2D FixedHook::getPosition() {
+    return pos;
+}
+
+string FixedHook::getState() {
 
 }
-string FixedHook::getState(){
 
-}
-string FixedHook::getDescription(){
-
+string FixedHook::getDescription() {
+    
 }

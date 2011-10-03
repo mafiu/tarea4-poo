@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "AttachableElement.h" // incluir la clase padre
 #include "Vector2D.h"
 #include "Spring.h"
@@ -29,7 +30,7 @@ public:
     void computeNextState(double delta_t,float gravity);
     string getDescription();
     string getState();
-
+    string int2string(int n);
     Vector2D getNetForce(float g);
     Vector2D getPosition();
 
@@ -37,7 +38,7 @@ public:
 private:
 
     // atributos
-    static int id;
+    int id;
     int myid;
     float mass;
     Vector2D pos;

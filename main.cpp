@@ -7,38 +7,41 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "Vector2D.h"
-#include "Block.h"
+#include <sstream>
+#include "MyWorld.h"
 
 using namespace std;
 
-/*
- * 
+/**
+ * Main: Clase que contiene el programa principal (main) de la tarea.
+ * Se configura con condiciones iniciales y se fijan ciertos parametros del
+ * experimento.
+ * @param args : se utilizan los 3 primeros argumentos para definir el
+ *  problema
  */
 
 int main(int argc, char** argv) {
-    
-    Vector2D A(2,3);
-    Vector2D B(1,1);
-    Block *b = new Block(1.2,A,B);
-    Block *c = new Block(1.2,A,B);
-    Spring *s = new Spring(0.2,1.0);
 
-    double tiempo = 1.1;
-    A += B;
-    Vector2D C = A*tiempo;
-
-    // al resorte agregarle a sus extremos dos bloques
-    s->attachAEnd(b);
-    //s->attachBEnd(c);
-
+    float samplingTime, deltaTime, endTime;
+    float gravity = -9.8f; // [m/s^2]
+    float dumping = 1.0f;
     
-    
-    Vector2D temp  = b->getNetForce(9.8);
+    istringstream b(argv[0]);
+    b >> samplingTime;
+    istringstream b(argv[1]);
+    b >> deltaTime;
+    istringstream b(argv[2]);
+    b >> endTime;
+   
+    ExperimentConfiguration configuration = new ExperimentConfiguration();
     
 
-    cout << "Fuerza X " << temp.X << "Fuerza Y " << temp.Y << endl;
-    
+    MyWorld world = new MyWorld();
+    world.setGravity(gravity);
+    world.setDumping(dumping);
+    //world.setOutputFile(System.out);
+    configuration.addItselfTo(world);
+    world.simulate(deltaTime, samplingTime, endTime); // delta time[s], total simulation time [s].
 
     return 0;
 }

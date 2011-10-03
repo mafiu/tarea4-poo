@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/ExperimentConfiguration.o \
 	${OBJECTDIR}/Vector2D.o \
 	${OBJECTDIR}/Spring.o \
-	${OBJECTDIR}/MyWorld.o
+	${OBJECTDIR}/MyWorld.o \
+	${OBJECTDIR}/FixedHook.o
 
 
 # C Compiler Flags
@@ -94,6 +95,11 @@ ${OBJECTDIR}/MyWorld.o: MyWorld.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/MyWorld.o MyWorld.cpp
+
+${OBJECTDIR}/FixedHook.o: FixedHook.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/FixedHook.o FixedHook.cpp
 
 # Subprojects
 .build-subprojects:

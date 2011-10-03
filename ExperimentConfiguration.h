@@ -9,6 +9,7 @@
 #define	EXPERIMENTCONFIGURATION_H
 
 #include "AttachableElement.h"
+#include "MyWorld.h"
 
 
 class ExperimentConfiguration {
@@ -16,8 +17,11 @@ public:
     ExperimentConfiguration();
     ExperimentConfiguration(const ExperimentConfiguration& orig);
     virtual ~ExperimentConfiguration();
-private:
+
+    void addItselfTo(MyWorld world);
     
+private:
+    vector<PhysicsElement *> elements;
 
 };
 

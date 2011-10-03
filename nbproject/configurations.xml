@@ -7,6 +7,9 @@
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>AttachableElement.h</itemPath>
       <itemPath>Block.h</itemPath>
+      <itemPath>ExperimentConfiguration.h</itemPath>
+      <itemPath>FixedHook.h</itemPath>
+      <itemPath>MyWorld.h</itemPath>
       <itemPath>PhysicsElement.h</itemPath>
       <itemPath>Spring.h</itemPath>
       <itemPath>Vector2D.h</itemPath>
@@ -21,6 +24,9 @@
                    projectFiles="true"
                    kind="SOURCE_LOGICAL_FOLDER">
       <itemPath>Block.cpp</itemPath>
+      <itemPath>ExperimentConfiguration.cpp</itemPath>
+      <itemPath>FixedHook.cpp</itemPath>
+      <itemPath>MyWorld.cpp</itemPath>
       <itemPath>Spring.cpp</itemPath>
       <itemPath>Vector2D.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -36,9 +42,6 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>ExperimentConfiguration.cpp</itemPath>
-    <itemPath>MyWorld.cpp</itemPath>
-    <itemPath>MyWorld.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

@@ -5,6 +5,8 @@
  * Created on 27 June 2011, 22:40
  */
 
+#include <vector>
+
 #include "Spring.h"
 #include "AttachableElement.h"
 #include "Vector2D.h"
@@ -54,30 +56,56 @@ Vector2D Spring::getForce(AttachableElement* ae) {
     double factor, largo, stretch = 0;
 
     // si uno de los lados esta vacio retorna un Vector2D vacio
-    if (a_end == NULL || b_end == NULL) return Vector2D(0,0);
-    if ((ae != a_end) && (ae != b_end)) return Vector2D(0,0);
+    if (a_end == NULL || b_end == NULL) return Vector2D(0, 0);
+    if ((ae != a_end) && (ae != b_end)) return Vector2D(0, 0);
 
-    
     // calculo de la fuerza
-    largo = getLength()   ;
+    largo = getLength();
     stretch = abs(largo) - restLength;
     factor = stretch * stiffness;
 
     // Fuerza del resorte hay que calcular el vector direccion de esta
     fuerza = (a_end->getPosition() - b_end->getPosition()).getDirection();
 
-    if(largo < 0) factor *= (-1);
-    if(ae == b_end) return fuerza*factor;
-    return fuerza*factor*(-1);
+    if (largo < 0) factor *= (-1);
+    if (ae == b_end) return fuerza * factor;
+    return fuerza * factor * (-1);
 
+}
+
+string Spring::int2string(int n) {
+    stringstream flujo;
+    flujo << n;
+    return (flujo.str());
 }
 
 string Spring::getDescription() {
-    string temp;
-    //temp.append("Spring #").append(getId()).append(": (x0,y0),(x1,y1)");
-    return temp;
+    string msg;
+    msg.append("Spring #").append(int2string(this->id)).append(": x,y");
+    return msg;
 }
 
 string Spring::getState() {
+    string s;
+    if (a_end != NULL) {
+
+
+    } else if (b_end != NULL) {
+
+    } else {
+
+    }
+
+    if (b_end != NULL) {
+
+
+    } else if (b_end != NULL) {
+
+
+    } else {
+
+    }
+
 
 }
+

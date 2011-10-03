@@ -10,12 +10,16 @@
 
 class Spring;
 
+#include <vector>
 #include <string>
+#include <sstream>
 #include "Vector2D.h"
+#include "AttachableElement.h" // incluir la clase padre
+#include "Spring.h"
 
 using namespace std;
 
-class FixedHook {
+class FixedHook:public AttachableElement {
 public:
     FixedHook();
     FixedHook(const FixedHook& orig);
@@ -32,7 +36,7 @@ public:
 
 private:
     Vector2D pos;
-    static int id = 0;
+    static int id;
     vector<Spring *> springs;
 
 };
