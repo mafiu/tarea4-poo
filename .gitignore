@@ -1,0 +1,8 @@
+build/
+dist/
+nbproject/
+.svn/
+.cproject
+.dep.inc
+.project
+*.o

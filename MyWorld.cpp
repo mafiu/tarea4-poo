@@ -5,7 +5,9 @@
  * Created on 16 August 2011, 23:13
  */
 
+#define forx(_type,_iter,_coll) for (_type::iterator _iter = _coll.begin(); _iter != _coll.end(); _iter++)
 #include "MyWorld.h"
+
 
 MyWorld::MyWorld() {
 }
@@ -16,24 +18,33 @@ MyWorld::MyWorld(const MyWorld& orig) {
 MyWorld::~MyWorld() {
 }
 
-void MyWorld::setGravity(float gravity){
+void MyWorld::setGravity(float gravity) {
     g = gravity;
 }
-void MyWorld::setDumping(float dumping){
+
+void MyWorld::setDumping(float dumping) {
     b = dumping;
 }
 //void MyWorld::setOutputFile(PrintStream out){
 //}
-void MyWorld::addElement(PhysicsElement e){
+
+void MyWorld::addElement(PhysicsElement e) {
     elements.push_back(e);
 }
-void MyWorld::simulate(float delta_t, float samplingTime, float endTime){
+
+void MyWorld::simulate(float delta_t, float samplingTime, float endTime) {
+    // initialize elements
+    forx(vector<PhysicsElement *>,e,elements) {
+        e->setInitialState(g);
+    }
+
 
 }
 
-void MyWorld::printSystemHeaders(){
+void MyWorld::printSystemHeaders() {
 
 }
-void MyWorld::printSystemState(double t){
+
+void MyWorld::printSystemState(double t) {
 
 }

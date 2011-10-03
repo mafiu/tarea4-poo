@@ -85,6 +85,7 @@ string Spring::getDescription() {
     return msg;
 }
 
+// TODO: Metodos toString del Vector son un cacho
 string Spring::getState() {
     string s;
     if (a_end != NULL) {
