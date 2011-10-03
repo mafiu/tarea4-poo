@@ -18,7 +18,7 @@ public:
     ExperimentConfiguration(const ExperimentConfiguration& orig);
     virtual ~ExperimentConfiguration();
 
-    void addItselfTo(MyWorld world);
+    void addItselfTo(MyWorld * world);
     
 private:
     vector<PhysicsElement *> elements;

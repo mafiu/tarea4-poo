@@ -11,6 +11,8 @@
 #include "Vector2D.h"
 #include "Block.h"
 #include "FixedHook.h"
+#include "PhysicsElement.h"
+
 
 using namespace std;
 
@@ -23,7 +25,7 @@ public:
     void setGravity(float gravity);
     void setDumping(float dumping);
     //void setOutputFile(PrintStream out);
-    void addElement(PhysicsElement e);
+    void addElement(PhysicsElement* e);
     void simulate(float delta_t, float samplingTime, float endTime);
     
 private:

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include "MyWorld.h"
-
+#include "ExperimentConfiguration.h"
 using namespace std;
 
 /**
@@ -28,20 +28,20 @@ int main(int argc, char** argv) {
     
     istringstream b(argv[0]);
     b >> samplingTime;
-    istringstream b(argv[1]);
-    b >> deltaTime;
-    istringstream b(argv[2]);
-    b >> endTime;
+    istringstream c(argv[1]);
+    c >> deltaTime;
+    istringstream d(argv[2]);
+    d >> endTime;
    
-    ExperimentConfiguration configuration = new ExperimentConfiguration();
+    ExperimentConfiguration * configuration = new ExperimentConfiguration();
     
 
-    MyWorld world = new MyWorld();
-    world.setGravity(gravity);
-    world.setDumping(dumping);
+    MyWorld * world = new MyWorld();
+    world->setGravity(gravity);
+    world->setDumping(dumping);
     //world.setOutputFile(System.out);
-    configuration.addItselfTo(world);
-    world.simulate(deltaTime, samplingTime, endTime); // delta time[s], total simulation time [s].
+    configuration->addItselfTo(world);
+    world->simulate(deltaTime, samplingTime, endTime); // delta time[s], total simulation time [s].
 
     return 0;
 }

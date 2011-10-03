@@ -8,7 +8,6 @@
 #define forx(_type,_iter,_coll) for (_type::iterator _iter = _coll.begin(); _iter != _coll.end(); _iter++)
 #include "MyWorld.h"
 
-
 MyWorld::MyWorld() {
 }
 
@@ -28,14 +27,26 @@ void MyWorld::setDumping(float dumping) {
 //void MyWorld::setOutputFile(PrintStream out){
 //}
 
-void MyWorld::addElement(PhysicsElement e) {
+void MyWorld::addElement(PhysicsElement * e) {
     elements.push_back(e);
 }
 
 void MyWorld::simulate(float delta_t, float samplingTime, float endTime) {
+
     // initialize elements
-    forx(vector<PhysicsElement *>,e,elements) {
-        e->setInitialState(g);
+
+    //forx(vector<PhysicsElement *>,e,elements) {
+    //    e->setInitialState(g);
+    //}
+
+
+    for (double t = 0, nextStateTime = 0; t < endTime; t += delta_t) {
+        if (t >= nextStateTime) { // decide if it is time to print state
+            printSystemState();
+            nextStateTime += samplingTime;
+        }
+        // foreach elements calculate nextstate then update
+
     }
 
 
