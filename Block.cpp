@@ -54,13 +54,14 @@ Vector2D Block::getNetForce(float g, float roce) {
     // iterar obtener el resorte i del arreglo y calcular la fuerza asociada
     for (int i = 0; i < springs.size(); i++) {
         // sumar fuerza resortes a la fuerza total
-        fuerza += springs.at(i)->getForce(this);
+        fuerza += springs[i]->getForce(this);
         //cout << fuerza.getX() << " " << fuerza.getY() << endl;
     }
 
     // fuerza = fuerzaresortes + roce + gravedad
     fuerza = fuerza + fuerzaroce + fuerzagravedad;
-
+    cout << "Fuerza" << fuerza.printVector2D() << endl;
+            
     return fuerza;
 }
 
@@ -69,11 +70,14 @@ Vector2D Block::getPosition() {
 }
 
 void Block::setInitialState(float g, float b) {
+    cout << "ALOOOOO" << accel_tMinusDelta.printVector2D() << endl;        
     accel_tMinusDelta = getNetForce(g, b) * (1 / mass);
+    
 }
 
 void Block::computeNextState(double delta_t, float g, float b) {
-    accel_t = getNetForce(g,b) * (1 / mass);
+    cout << "YEYY" << endl;
+    accel_t = getNetForce(g, b) * (1 / mass);
 
     /* estas son las ecuaciones para calcular la velocidad y posicion en un 
      * delta posterior la fuente es el documento que pasó el profesor */
@@ -83,6 +87,8 @@ void Block::computeNextState(double delta_t, float g, float b) {
     pos_tPlusDelta = pos + (speed_t * delta_t) + (4.0 * accel_t
             - accel_tMinusDelta) * delta_t * delta_t * (1 / 6);
 }
+
+
 
 void Block::updateState() {
     pos = pos_tPlusDelta;

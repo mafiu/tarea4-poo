@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     
     
     // set environment constants
-    float gravity = -9.8f; // [m/s^2]
+    float gravity = 9.8f; // [m/s^2]
     float dumping = 1.0f;
 
     
@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
     ExperimentConfiguration * exp = new ExperimentConfiguration();
     exp->addItselfTo(world);
     
-    world->simulate(0.001,0,10); // delta time[s], total simulation time [s].
+    world->simulate(0.1,0,10); // delta time[s], total simulation time [s].
     
     return 0;
 }

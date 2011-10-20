@@ -17,6 +17,7 @@ Spring::Spring(float restLength, float stiffness) {
     this->restLength = restLength;
     this->stiffness = stiffness;
     a_end = b_end = NULL;
+    id=0;
 }
 
 void Spring::attachAEnd(AttachableElement* ae) {
@@ -55,9 +56,16 @@ Vector2D Spring::getForce(AttachableElement* ae) {
     Vector2D fuerza;
     double factor, largo, stretch = 0;
 
+    cout << "Entre" << endl;
     // si uno de los lados esta vacio retorna un Vector2D vacio
-    if (a_end == NULL || b_end == NULL) return Vector2D(0, 0);
-    if ((ae != a_end) && (ae != b_end)) return Vector2D(0, 0);
+    if (a_end == NULL || b_end == NULL) {
+        cout << "Crap 1" << endl;
+        return Vector2D(0, 0);
+    }
+    if ((ae != a_end) && (ae != b_end)) {
+        cout << "Crap 2" << endl;
+        return Vector2D(0, 0);
+    }
 
     // calculo de la fuerza
     largo = getLength();
@@ -66,6 +74,8 @@ Vector2D Spring::getForce(AttachableElement* ae) {
 
     // Fuerza del resorte hay que calcular el vector direccion de esta
     fuerza = (a_end->getPosition() - b_end->getPosition()).getDirection();
+
+    cout << "Vector" << fuerza.printVector2D() << endl;
 
     if (largo < 0) factor *= (-1);
     if (ae == b_end) return fuerza * factor;
