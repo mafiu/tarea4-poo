@@ -42,7 +42,7 @@ void MyWorld::simulate(float delta_t, float samplingTime, float endTime) {
 
     for (double t = 0, nextStateTime = 0; t < endTime; t += delta_t) {
         if (t >= nextStateTime) { // decide if it is time to print state
-            printSystemState();
+            //printSystemState();
             nextStateTime += samplingTime;
         }
         // foreach elements calculate nextstate then update
@@ -53,9 +53,15 @@ void MyWorld::simulate(float delta_t, float samplingTime, float endTime) {
 }
 
 void MyWorld::printSystemHeaders() {
-
+    cout << "Time";
+    for (int i = 0; i < elements.size(); i++) // print header
+        cout << ",," << elements[i]->getDescription();
+    cout << endl;
 }
 
 void MyWorld::printSystemState(double t) {
-
+    cout << t;
+    for (int i = 0; i < elements.size(); i++)
+        cout << ",," << elements[i]->getState(); // print each element state
+    cout << endl;
 }
