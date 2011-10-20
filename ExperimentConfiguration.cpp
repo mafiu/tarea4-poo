@@ -22,7 +22,7 @@ ExperimentConfiguration::ExperimentConfiguration() {
      * stiffnes: 10 [N/m]
      */
     double restLength = 1;
-    float stiffness = (float)10;
+    float stiffness = (float) 10;
     float mass = 1.0;
     double posx_hook = 0.0;
     double posy_hook = 3.0;
@@ -56,5 +56,7 @@ ExperimentConfiguration::ExperimentConfiguration(const ExperimentConfiguration& 
 ExperimentConfiguration::~ExperimentConfiguration() {
 }
 
-
-
+ExperimentConfiguration::addItselfTo(MyWorld* world) {
+    for (int i = 0; i < elements.size(); i++)
+        world->addElement(elements[i]);
+}
