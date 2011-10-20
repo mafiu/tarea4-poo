@@ -80,33 +80,38 @@ string Spring::int2string(int n) {
 }
 
 string Spring::getDescription() {
-    string msg;
-    msg.append("Spring #").append(int2string(this->id)).append(": x,y");
-    return msg;
+    stringstream id;
+    id << getId();
+    return "Spring#" + id.str() + ":(x0,y0),(x1,y1)";
 }
 
 // TODO: Metodos toString del Vector son un cacho
+
 string Spring::getState() {
     string s;
-    if (a_end != NULL) {
+    if (a_end != NULL)
+        s = a_end->getPosition().printVector2D() + ",";
+    else if (b_end != NULL) {
+        stringstream x, y;
+        x << (b_end->getPosition().getX() - restLength);
+        y << (b_end->getPosition().getY() - restLength);
+        s = x.str() + "," + y.str() + ",";
 
-
-    } else if (b_end != NULL) {
-
+    } else
+        s = "0.0"; // up to here left end is determined 
+    if (b_end != NULL)
+        s += b_end->getPosition().printVector2D();
+    else if (a_end != NULL) {
+        stringstream x, y;
+        x << (a_end->getPosition().getX() + restLength);
+        y << (a_end->getPosition().getY() + restLength);
+        s += x.str() + "," + y.str();
     } else {
-
+        stringstream strLength;
+        strLength << restLength;
+        s += strLength.str();
     }
-
-    if (b_end != NULL) {
-
-
-    } else if (b_end != NULL) {
-
-
-    } else {
-
-    }
-
+    return s;
 
 }
 

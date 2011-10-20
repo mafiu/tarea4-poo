@@ -21,7 +21,7 @@ class Vector2D;
 
 class AttachableElement : public PhysicsElement {
 public:
-    AttachableElement(){};
+    AttachableElement();
     virtual void attachSpring(Spring* s){};
     virtual void detachSpring(Spring* s){};
     virtual Vector2D getPosition() = 0;

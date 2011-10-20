@@ -34,10 +34,12 @@ Vector2D FixedHook::getPosition() {
     return pos;
 }
 
-string FixedHook::getState() {
-
+string FixedHook::getDescription() {
+    stringstream getid;
+    getid << getId();
+    return "FixedHook_" + getid.str() + ": y";
 }
 
-string FixedHook::getDescription() {
-    
+string FixedHook::getState() {
+    return getPosition().printVector2D();
 }

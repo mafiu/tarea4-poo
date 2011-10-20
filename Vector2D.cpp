@@ -12,7 +12,6 @@
 #include "Spring.h"
 #include <iostream>
 
-
 Vector2D::Vector2D() {
 
 }
@@ -61,29 +60,27 @@ void Vector2D::operator-=(const Vector2D& right) {
 }
 
 // la version vector * escalar
-Vector2D Vector2D::operator*(const Vector2D& left)
-{
+
+Vector2D Vector2D::operator*(const Vector2D& left) {
     X *= left.X;
     Y *= left.Y;
     return *this; //asi no ocupo un Vector2D auxiliar
 }
 
-Vector2D Vector2D::operator *(const double rhs)
-{
+Vector2D Vector2D::operator *(const double rhs) {
     X *= rhs;
     Y *= rhs;
     return *this;
-} 
+}
 
-double Vector2D::distancia(const Vector2D& vec1)
-{
-        double distancia_x=vec1.X- X ;
-        double distancia_y=vec1.Y- Y ;
-        return (double)sqrt((distancia_x*distancia_x)+(distancia_y*distancia_y));
+double Vector2D::distancia(const Vector2D& vec1) {
+    double distancia_x = vec1.X - X;
+    double distancia_y = vec1.Y - Y;
+    return (double) sqrt((distancia_x * distancia_x)+(distancia_y * distancia_y));
 };
 
-Vector2D Vector2D::getDirection(){
-    return *this*(1/sqrt(X*X+Y*Y));
+Vector2D Vector2D::getDirection() {
+    return *this*(1 / sqrt(X * X + Y * Y));
 }
 
 double Vector2D::getX() {
@@ -92,4 +89,18 @@ double Vector2D::getX() {
 
 double Vector2D::getY() {
     return this->Y;
+}
+
+string Vector2D::printVector2D() {
+    string tostr;
+    stringstream x, y; //trabaja con libreria sstream
+    x << this->X;
+    y << this->Y;
+    tostr = x.str() + "," + y.str();
+
+    return tostr;
+}
+
+void Vector2D::salidaVector2D() {
+    cout << "(" << this->X << "," << this->Y << ")" << endl;
 }

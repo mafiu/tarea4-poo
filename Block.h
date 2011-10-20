@@ -18,20 +18,20 @@
 
 using namespace std;
 
-class Block:public AttachableElement {
+class Block : public AttachableElement {
 public:
     Block();
     Block(float mass, Vector2D& position, Vector2D& speed);
     void attachSpring(Spring* spring);
     void detachSpring(Spring* spring);
     int size();
-    void setInitialState(float g);
+    void setInitialState(float g, float b);
     void updateState();
-    void computeNextState(double delta_t,float gravity);
+    void computeNextState(double delta_t, float gravity, float b);
     string getDescription();
     string getState();
     string int2string(int n);
-    Vector2D getNetForce(float g);
+    Vector2D getNetForce(float g, float roce);
     Vector2D getPosition();
 
 

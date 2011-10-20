@@ -35,11 +35,11 @@ public:
     Vector2D getForce(AttachableElement* ae);
 
     string int2string(int n);
-    
+
     // displayers
     string getDescription();
     string getState();
-
+    
 
 
 private:

@@ -5,5 +5,3 @@ using namespace std;
 AttachableElement::AttachableElement(){
     
 }
-AttachableElement::~AttachableElement() {
-}

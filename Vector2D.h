@@ -40,6 +40,8 @@ public:
 
     // Display
     std::string getDescription();
+    string printVector2D();
+    void salidaVector2D();
 };
 
 // con el overloading de arriba se puede hacer Vector*escalar y con este

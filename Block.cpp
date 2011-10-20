@@ -17,16 +17,14 @@ Block::Block(float m, Vector2D& position, Vector2D& speed) {
 
 string Block::getDescription() {
     //  crear el string "Block #" + getId() + ": x,y";
-    string msg;
-    msg.append("Block #").append(int2string(myid)).append(": x,y");
-    return msg;
+    stringstream strDescription;
+    strDescription << getId();
+    return "Block_" + strDescription.str() + ":(x,y)";
 
 }
 
 string Block::getState() {
-    string msg;
-    
-    return msg;
+    return getPosition().printVector2D();
 }
 
 string Block::int2string(int n) {
@@ -34,8 +32,6 @@ string Block::int2string(int n) {
     flujo << n;
     return (flujo.str());
 }
-
-
 
 /* Asociar a Resortes*/
 
@@ -49,11 +45,10 @@ void Block::detachSpring(Spring* spring) {
 
 /* Calcular Fuerzas y Estados */
 
-Vector2D Block::getNetForce(float g) {
-    double roce = 1.0;
+Vector2D Block::getNetForce(float g, float roce) {
+
     Vector2D fuerza;
     Vector2D fuerzagravedad(0, -mass * g);
-
     Vector2D fuerzaroce(-roce * speed_t.getX(), -roce * speed_t.getY());
 
     // iterar obtener el resorte i del arreglo y calcular la fuerza asociada
@@ -73,12 +68,12 @@ Vector2D Block::getPosition() {
     return pos;
 }
 
-void Block::setInitialState(float g) {
-    accel_tMinusDelta = getNetForce(g) * (1 / mass);
+void Block::setInitialState(float g, float b) {
+    accel_tMinusDelta = getNetForce(g, b) * (1 / mass);
 }
 
-void Block::computeNextState(double delta_t, float g) {
-    accel_t = getNetForce(g) * (1 / mass);
+void Block::computeNextState(double delta_t, float g, float b) {
+    accel_t = getNetForce(g,b) * (1 / mass);
 
     /* estas son las ecuaciones para calcular la velocidad y posicion en un 
      * delta posterior la fuente es el documento que pasó el profesor */

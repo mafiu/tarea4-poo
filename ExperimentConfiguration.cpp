@@ -23,7 +23,7 @@ ExperimentConfiguration::ExperimentConfiguration() {
      */
     double restLength = 1;
     float stiffness = (float) 10;
-    float mass = 1.0;
+    float mass = 2.0;
     double posx_hook = 0.0;
     double posy_hook = 3.0;
 
@@ -46,7 +46,11 @@ ExperimentConfiguration::ExperimentConfiguration() {
     spring->attachBEnd(block);
     spring2->attachAEnd(block);
     spring2->attachBEnd(block2);
-
+    
+    // add to elements array
+    elements.push_back(hook);
+    elements.push_back(spring);
+    elements.push_back(block);
 
 }
 
@@ -56,7 +60,7 @@ ExperimentConfiguration::ExperimentConfiguration(const ExperimentConfiguration& 
 ExperimentConfiguration::~ExperimentConfiguration() {
 }
 
-ExperimentConfiguration::addItselfTo(MyWorld* world) {
+void ExperimentConfiguration::addItselfTo(MyWorld* world) {
     for (int i = 0; i < elements.size(); i++)
         world->addElement(elements[i]);
 }

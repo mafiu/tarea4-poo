@@ -14,16 +14,19 @@ using namespace std;
 
 class PhysicsElement {
 public:
-    PhysicsElement(){};
+    PhysicsElement();
     PhysicsElement(const PhysicsElement& orig);
-    void setInitialState(float g);
-    void computeNextState(double delta_t, float gravity);
+    void setInitialState(float g, float b);
+    void computeNextState(double delta_t, float gravity, float viscocity);
     void updateState();
-    virtual string getDescription() = 0 ;
-    virtual string getState() = 0 ;
-    
-private:
+    virtual string getDescription() = 0;
+    virtual string getState() = 0;
 
+private:
+    int myId;
+protected:
+    PhysicsElement(int id);
+    int getId();
 };
 
 #endif	/* PHYSICSELEMENT_H */

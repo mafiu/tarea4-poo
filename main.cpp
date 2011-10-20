@@ -10,6 +10,7 @@
 #include <sstream>
 #include "MyWorld.h"
 #include "ExperimentConfiguration.h"
+
 using namespace std;
 
 /**
@@ -21,28 +22,26 @@ using namespace std;
  */
 
 int main(int argc, char** argv) {
-
-    float samplingTime, deltaTime, endTime;
+    
+    // get argv data
+    
+    
+    // set environment constants
     float gravity = -9.8f; // [m/s^2]
     float dumping = 1.0f;
-    
-    istringstream b(argv[0]);
-    b >> samplingTime;
-    istringstream c(argv[1]);
-    c >> deltaTime;
-    istringstream d(argv[2]);
-    d >> endTime;
-   
-    ExperimentConfiguration * configuration = new ExperimentConfiguration();
-    
 
+    
+    // set new experiment situation
     MyWorld * world = new MyWorld();
-    world->setGravity(gravity);
     world->setDumping(dumping);
-    //world.setOutputFile(System.out);
-    configuration->addItselfTo(world);
-    world->simulate(deltaTime, samplingTime, endTime); // delta time[s], total simulation time [s].
-
+    world->setGravity(gravity);
+    
+    // add the world situation to the experiment
+    ExperimentConfiguration * exp = new ExperimentConfiguration();
+    exp->addItselfTo(world);
+    
+    world->simulate(0.001,0,10); // delta time[s], total simulation time [s].
+    
     return 0;
 }
 

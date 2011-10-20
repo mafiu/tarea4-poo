@@ -10,9 +10,23 @@
 PhysicsElement::PhysicsElement() {
 }
 
+PhysicsElement::PhysicsElement(int id) {
+    myId = id;
+}
+
+int PhysicsElement::getId() {
+    return myId;
+}
+
 PhysicsElement::PhysicsElement(const PhysicsElement& orig) {
 }
 
-PhysicsElement::~PhysicsElement() {
+void PhysicsElement::setInitialState(float g, float b) {
+}
+
+void PhysicsElement::computeNextState(double delta_t, float gravity, float viscocity) {
+}
+
+void PhysicsElement::updateState() {
 }
 
