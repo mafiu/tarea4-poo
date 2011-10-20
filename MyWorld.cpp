@@ -53,18 +53,18 @@ void MyWorld::simulate(float delta_t, float samplingTime, float endTime) {
 
     printSystemHeaders();
 
-    for (int i = 0; i < elements.size(); i++){
+    for (int i = 0; i < elements.size(); i++) {
         elements[i]->setInitialState(g, b);
-        cout << "Starting .." << elements[i]->getDescription() << endl;
     }
+    
     for (double t = 0, nextStateTime = 0; t < endTime; t += delta_t) {
         if (t >= nextStateTime) { // decide if it is time to print state
             printSystemState(t);
             nextStateTime += samplingTime;
         }
-        for (int i = 0; i < elements.size(); i++){ // for each element
+        for (int i = 0; i < elements.size(); i++) { // for each element
             elements[i]->computeNextState(delta_t, g, b); // compute next state
-            
+
         }
         for (int i = 0; i < elements.size(); i++) // for all elements
             elements[i]->updateState(); // update its state

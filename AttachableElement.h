@@ -21,15 +21,16 @@ class Vector2D;
 
 class AttachableElement : public PhysicsElement {
 public:
-    AttachableElement();
-    virtual void attachSpring(Spring* s){};
-    virtual void detachSpring(Spring* s){};
+
+    virtual void attachSpring(Spring* s) = 0;
+    virtual void detachSpring(Spring* s) = 0;
     virtual Vector2D getPosition() = 0;
-    
+
 
 private:
 protected:
-
+    AttachableElement(int id);
+    
 };
 
 #endif	/* ATTACHABLEELEMENT_H */

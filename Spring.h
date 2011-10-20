@@ -39,8 +39,8 @@ public:
     // displayers
     string getDescription();
     string getState();
-    
 
+    
 
 private:
     int id;

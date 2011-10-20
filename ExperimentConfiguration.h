@@ -10,7 +10,10 @@
 
 #include "AttachableElement.h"
 #include "MyWorld.h"
-
+#include "Vector2D.h"
+#include "FixedHook.h"
+#include "Block.h"
+#include "Spring.h"
 
 class ExperimentConfiguration {
 public:

@@ -19,12 +19,10 @@ class Spring;
 
 using namespace std;
 
-class FixedHook:public AttachableElement {
+class FixedHook : public AttachableElement {
 public:
-    FixedHook();
-    FixedHook(const FixedHook& orig);
     FixedHook(Vector2D& position);
-    virtual ~FixedHook();
+
 
 
     void attachSpring(Spring* spring);
@@ -34,7 +32,10 @@ public:
     string getState();
     string getDescription();
 
+
+
 private:
+    FixedHook();
     Vector2D pos;
     static int id;
     vector<Spring *> springs;

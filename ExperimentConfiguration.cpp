@@ -21,8 +21,8 @@ ExperimentConfiguration::ExperimentConfiguration() {
      * mass: 1.0 kg
      * stiffnes: 10 [N/m]
      */
-    double restLength = 1;
-    float stiffness = (float) 10;
+    double restLength = 1.0;
+    float stiffness = 10.0;
     float mass = 2.0;
     double posx_hook = 0.0;
     double posy_hook = 3.0;

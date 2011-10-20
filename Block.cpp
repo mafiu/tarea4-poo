@@ -8,7 +8,13 @@
 #include "Block.h"
 #include "Spring.h"
 
-Block::Block(float m, Vector2D& position, Vector2D& speed) {
+Block::Block()
+: AttachableElement(id++) {
+    mass = 0;
+
+}
+
+Block::Block(float m, Vector2D& position, Vector2D& speed) : AttachableElement(id++) {
     this->mass = m;
     this->pos = position;
     this->speed_t = speed;
@@ -25,12 +31,6 @@ string Block::getDescription() {
 
 string Block::getState() {
     return getPosition().printVector2D();
-}
-
-string Block::int2string(int n) {
-    stringstream flujo;
-    flujo << n;
-    return (flujo.str());
 }
 
 /* Asociar a Resortes*/
@@ -60,8 +60,8 @@ Vector2D Block::getNetForce(float g, float roce) {
 
     // fuerza = fuerzaresortes + roce + gravedad
     fuerza = fuerza + fuerzaroce + fuerzagravedad;
-    cout << "Fuerza" << fuerza.printVector2D() << endl;
-            
+    
+
     return fuerza;
 }
 
@@ -70,13 +70,11 @@ Vector2D Block::getPosition() {
 }
 
 void Block::setInitialState(float g, float b) {
-    cout << "ALOOOOO" << accel_tMinusDelta.printVector2D() << endl;        
     accel_tMinusDelta = getNetForce(g, b) * (1 / mass);
-    
+
 }
 
 void Block::computeNextState(double delta_t, float g, float b) {
-    cout << "YEYY" << endl;
     accel_t = getNetForce(g, b) * (1 / mass);
 
     /* estas son las ecuaciones para calcular la velocidad y posicion en un 
@@ -87,8 +85,6 @@ void Block::computeNextState(double delta_t, float g, float b) {
     pos_tPlusDelta = pos + (speed_t * delta_t) + (4.0 * accel_t
             - accel_tMinusDelta) * delta_t * delta_t * (1 / 6);
 }
-
-
 
 void Block::updateState() {
     pos = pos_tPlusDelta;

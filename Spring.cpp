@@ -13,11 +13,16 @@
 
 using namespace std;
 
-Spring::Spring(float restLength, float stiffness) {
+Spring::Spring()
+: PhysicsElement(id++) {
+    stiffness = 0;
+}
+
+Spring::Spring(float restLength, float stiffness) : PhysicsElement(id++) {
     this->restLength = restLength;
     this->stiffness = stiffness;
     a_end = b_end = NULL;
-    id=0;
+    id = 0;
 }
 
 void Spring::attachAEnd(AttachableElement* ae) {
@@ -56,7 +61,7 @@ Vector2D Spring::getForce(AttachableElement* ae) {
     Vector2D fuerza;
     double factor, largo, stretch = 0;
 
-    cout << "Entre" << endl;
+
     // si uno de los lados esta vacio retorna un Vector2D vacio
     if (a_end == NULL || b_end == NULL) {
         cout << "Crap 1" << endl;
@@ -75,18 +80,12 @@ Vector2D Spring::getForce(AttachableElement* ae) {
     // Fuerza del resorte hay que calcular el vector direccion de esta
     fuerza = (a_end->getPosition() - b_end->getPosition()).getDirection();
 
-    cout << "Vector" << fuerza.printVector2D() << endl;
+
 
     if (largo < 0) factor *= (-1);
     if (ae == b_end) return fuerza * factor;
     return fuerza * factor * (-1);
 
-}
-
-string Spring::int2string(int n) {
-    stringstream flujo;
-    flujo << n;
-    return (flujo.str());
 }
 
 string Spring::getDescription() {
@@ -124,4 +123,6 @@ string Spring::getState() {
     return s;
 
 }
+
+
 

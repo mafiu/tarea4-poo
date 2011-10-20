@@ -2,6 +2,6 @@
 
 using namespace std;
 
-AttachableElement::AttachableElement(){
-    
+AttachableElement::AttachableElement(int id)
+: PhysicsElement(id) {
 }

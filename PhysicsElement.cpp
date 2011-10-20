@@ -7,8 +7,6 @@
 
 #include "PhysicsElement.h"
 
-PhysicsElement::PhysicsElement() {
-}
 
 PhysicsElement::PhysicsElement(int id) {
     myId = id;
@@ -18,8 +16,6 @@ int PhysicsElement::getId() {
     return myId;
 }
 
-PhysicsElement::PhysicsElement(const PhysicsElement& orig) {
-}
 
 void PhysicsElement::setInitialState(float g, float b) {
 }

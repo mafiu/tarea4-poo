@@ -9,17 +9,15 @@
 
 /* Clase que permite definir el comportamiento del gancho
  */
-FixedHook::FixedHook() {
+
+int FixedHook::id=0;
+
+FixedHook::FixedHook() : AttachableElement(id++) {
 }
 
-FixedHook::FixedHook(const FixedHook& orig) {
-}
-
-FixedHook::FixedHook(Vector2D& position) {
+FixedHook::FixedHook(Vector2D &position) : AttachableElement(id++) {
     pos = position;
-}
-
-FixedHook::~FixedHook() {
+    
 }
 
 void FixedHook::attachSpring(Spring* spring) {
@@ -43,3 +41,4 @@ string FixedHook::getDescription() {
 string FixedHook::getState() {
     return getPosition().printVector2D();
 }
+

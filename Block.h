@@ -25,6 +25,7 @@ public:
     void attachSpring(Spring* spring);
     void detachSpring(Spring* spring);
     int size();
+    
     void setInitialState(float g, float b);
     void updateState();
     void computeNextState(double delta_t, float gravity, float b);
